@@ -38,6 +38,8 @@ Six role images, one per card function. Published in `branding/frontier-sales-ho
 | CPAI | `img_cpai_v1.jpg` |
 | Security | `img_security_v1.jpg` |
 
+Copy page: `branding/frontier-sales-home/copy.html` is a static page (GitHub Pages) that copies a prompt to the clipboard. The card's Copy prompt button opens it as `copy.html?t=<url-encoded prompt>`. It stores and logs nothing.
+
 Spec: square JPEG, 800 x 800, under 1 MB (about 100 KB each), no text inside the image. The card shows it as a 112 px thumbnail beside the title.
 
 ## How to use the repo from an agent

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Copy prompt</title>
+<style>
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f3f2f1;margin:0;display:flex;justify-content:center;padding:32px 16px}
+  .card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1);max-width:560px;width:100%;padding:28px}
+  h1{font-size:20px;margin:0 0 4px;color:#242424}
+  p{color:#616161;font-size:14px;margin:0 0 16px}
+  textarea{width:100%;box-sizing:border-box;min-height:140px;font:14px Consolas,'Courier New',monospace;padding:12px;border:1px solid #d1d1d1;border-radius:6px;background:#e8ebfa;color:#242424;resize:vertical}
+  .row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  a.btn,button{font:600 14px 'Segoe UI',Arial,sans-serif;padding:8px 18px;border-radius:4px;border:1px solid #d1d1d1;background:#fff;color:#242424;cursor:pointer;text-decoration:none}
+  button.primary,a.primary{background:#5b5fc7;border-color:#5b5fc7;color:#fff}
+  #status{margin-top:14px;font-size:14px;min-height:20px;color:#107c10}
+  #status.warn{color:#8a5a00}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Your prompt</h1>
+  <p>Copy it, then paste it into the Sales agent.</p>
+  <textarea id="t" readonly></textarea>
+  <div class="row">
+    <button class="primary" id="copy">Copy prompt</button>
+    <a class="btn" href="https://copilot.cloud.microsoft/agents/saleschat" target="_blank" rel="noopener">Open the Sales agent</a>
+  </div>
+  <div id="status" role="status"></div>
+</div>
+<script>
+  const t = document.getElementById('t'), s = document.getElementById('status');
+  const raw = new URLSearchParams(location.search).get('t') || '';
+  t.value = raw.slice(0, 1500);
+  if (!t.value) { s.className = 'warn'; s.textContent = 'No prompt in this link. Copy it from the card instead.'; }
+
+  async function doCopy() {
+    if (!t.value) return false;
+    try { await navigator.clipboard.writeText(t.value); return true; } catch (e) {}
+    t.focus(); t.select();
+    try { return document.execCommand('copy'); } catch (e) { return false; }
+  }
+  async function run() {
+    if (await doCopy()) { s.className = ''; s.textContent = 'Copied. Paste it into the Sales agent.'; }
+    else { t.focus(); t.select(); s.className = 'warn'; s.textContent = 'Press Ctrl+C to copy the selected text.'; }
+  }
+  document.getElementById('copy').addEventListener('click', run);
+  window.addEventListener('load', () => { t.focus(); t.select(); });
+</script>
+</body>
+</html>
