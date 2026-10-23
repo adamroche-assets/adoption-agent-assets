@@ -27,18 +27,18 @@ https://raw.githubusercontent.com/adamroche-assets/adoption-agent-assets/main/br
 
 ## Frontier Sales Home Cards
 
-Six role banners, one per card function. Place them in `branding/frontier-sales-home/`.
+Six role images, one per card function. Published in `branding/frontier-sales-home/`.
 
 | Function | File (version 1) |
 |---|---|
-| General | `img_general_v1.png` |
-| AE | `img_ae_v1.png` |
-| AI Workforce | `img_ai-workforce_v1.png` |
-| AIBP | `img_aibp_v1.png` |
-| CPAI | `img_cpai_v1.png` |
-| Security | `img_security_v1.png` |
+| General | `img_general_v1.jpg` |
+| AE | `img_ae_v1.jpg` |
+| AI Workforce | `img_ai-workforce_v1.jpg` |
+| AIBP | `img_aibp_v1.jpg` |
+| CPAI | `img_cpai_v1.jpg` |
+| Security | `img_security_v1.jpg` |
 
-Spec: PNG, 1200 x 600 (2:1), under 1 MB, no text inside the image. The card supplies the title.
+Spec: square JPEG, 800 x 800, under 1 MB (about 100 KB each), no text inside the image. The card shows it as a 112 px thumbnail beside the title.
 
 ## How to use the repo from an agent
 
@@ -51,7 +51,7 @@ Spec: PNG, 1200 x 600 (2:1), under 1 MB, no text inside the image. The card supp
 Adaptive Card image element:
 
 ```json
-{ "type": "Image", "url": "https://raw.githubusercontent.com/adamroche-assets/adoption-agent-assets/main/branding/frontier-sales-home/img_ae_v1.png", "size": "Stretch", "altText": "Banner" }
+{ "type": "Image", "url": "https://raw.githubusercontent.com/adamroche-assets/adoption-agent-assets/main/branding/frontier-sales-home/img_ae_v1.jpg", "size": "Stretch", "altText": "Role mascot" }
 ```
 
 ## Rules
